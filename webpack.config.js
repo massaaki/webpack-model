@@ -21,6 +21,9 @@ module.exports = {
           presets: ['@babel/env']
         }
       }
+    }, {
+      test: /\.css$/,
+      use: ['style-loader', 'css-loader']
     }]
   },
   devtool: 'source-map' //debug separated by file and line in browser
