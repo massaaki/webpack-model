@@ -1,2 +1,9 @@
+import GeraCPF from './modules/GeraCPF';
 import './assets/css/style.css';
-console.log('just a simple template with webpack configs');
+
+//iife
+(function () {
+  const cpf = new GeraCPF() 
+  const cpfField = document.querySelector('.document-generated');
+  cpfField.innerHTML = cpf.geraNovoCpf();
+})();
