@@ -1,0 +1,1 @@
+console.log('just a simple template with webpack configs');
