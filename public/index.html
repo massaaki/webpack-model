@@ -4,11 +4,42 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Boilerplate</title>
+  <title>Password Generator</title>
 </head>
 <body>
-  <h1>Reference code</h1>
-  <p>Just a code reference with webpack config</p>
+  <h1>Password Generate Example</h1>
+  <div class="password-generated">PASSWORD HERE</div>
+
+  <h2>Select options:</h2>
+  <div>
+    Quantity letters
+    <input type="number" class="qty-letters" name="" min="1" max="50" value="10">
+  </div>
+
+  <div>
+    Uppercase
+    <input type="checkbox" class="chk-upper" checked>
+  </div>
+
+  <div>
+    Lowercase
+    <input type="checkbox" class="chk-lower" checked>
+  </div>
+  <div>
+    Numbers
+    <input type="checkbox" class="chk-number" checked>
+  </div>
+
+  <div>
+    Symbol
+    <input type="checkbox" class="chk-symbol" checked>
+  </div>
+
+  <div>
+    <button class="generate-password">Generate Password</button>
+  </div>
+
+
   <script src="./assets/js/bundle.js"></script>
 </body>
 </html>

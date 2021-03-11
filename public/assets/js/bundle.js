@@ -2,6 +2,87 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/modules/formGeraSenha.js":
+/*!**************************************!*\
+  !*** ./src/modules/formGeraSenha.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _generators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./generators */ "./src/modules/generators.js");
+
+var passwordGeneratedField = document.querySelector('.password-generated');
+var qtyField = document.querySelector('.qty-letters');
+var checkboxUppers = document.querySelector('.chk-upper');
+var checkboxLowers = document.querySelector('.chk-lower');
+var checkboxNumbers = document.querySelector('.chk-number');
+var checkboxSymbols = document.querySelector('.chk-symbol');
+var generateButton = document.querySelector('.generate-password');
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
+  generateButton.addEventListener('click', function () {
+    passwordGeneratedField.innerHTML = generate();
+  });
+});
+
+function generate() {
+  var password = (0,_generators__WEBPACK_IMPORTED_MODULE_0__.default)(qtyField.value, checkboxUppers.checked, checkboxLowers.checked, checkboxNumbers.checked, checkboxSymbols.checked);
+  return password || 'Select some options to generate your password';
+}
+
+/***/ }),
+
+/***/ "./src/modules/generators.js":
+/*!***********************************!*\
+  !*** ./src/modules/generators.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ geraSenha)
+/* harmony export */ });
+// console.log(String.fromCharCode(33));
+var rand = function rand(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
+};
+
+var geraMaiuscula = function geraMaiuscula() {
+  return String.fromCharCode(rand(65, 91));
+};
+
+var geraMinuscula = function geraMinuscula() {
+  return String.fromCharCode(rand(97, 123));
+};
+
+var geraNumero = function geraNumero() {
+  return String.fromCharCode(rand(48, 58));
+};
+
+var simbolos = ',.;~^[]!@#$%*()_+-=';
+
+var geraSimbolo = function geraSimbolo() {
+  return simbolos[rand(0, simbolos.length)];
+};
+
+function geraSenha(qtd, maiusculas, minusculas, numeros, simbolos) {
+  var senha = [];
+  qtd = Number(qtd);
+
+  for (var i = 0; i < qtd; i++) {
+    maiusculas && senha.push(geraMaiuscula());
+    minusculas && senha.push(geraMinuscula());
+    numeros && senha.push(geraNumero());
+    simbolos && senha.push(geraSimbolo());
+  }
+
+  return senha.join('').slice(0, qtd);
+}
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./src/assets/css/style.css":
 /*!************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./src/assets/css/style.css ***!
@@ -21,7 +102,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\n    font-family: 'Segoe UI',\n    Tahoma,\n    Geneva,\n    Verdana,\n    sans-serif;   \n}\nh1 {\n  color: rgb(53, 53, 53);\n}\np{\n  color: rgb(145, 145, 145);\n}\n", "",{"version":3,"sources":["webpack://./src/assets/css/style.css"],"names":[],"mappings":"AAAA;IACI;;;;cAIU;AACd;AACA;EACE,sBAAsB;AACxB;AACA;EACE,yBAAyB;AAC3B","sourcesContent":["* {\n    font-family: 'Segoe UI',\n    Tahoma,\n    Geneva,\n    Verdana,\n    sans-serif;   \n}\nh1 {\n  color: rgb(53, 53, 53);\n}\np{\n  color: rgb(145, 145, 145);\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\n    font-family: 'Segoe UI',\n    Tahoma,\n    Geneva,\n    Verdana,\n    sans-serif;   \n}\nh1 {\n  font-size: 1rem;\n}\n\nh2 {\n  font-size: 0.9rem;\n}\n\n.password-generated {\n  font-size: 1.2rem;\n  margin-bottom: 1rem;\n  font-weight: bold;\n  background: lightgray;\n  max-width: 30rem;\n  width: 100%;\n  padding: 1rem;\n}\n\ninput[type=\"checkbox\"] {\n  width: 1rem;\n  height: 1rem;\n}\n\nbutton {\n  margin-top: 1rem;\n  max-width: 20rem;\n  width: 100%;\n  padding: 1rem;\n  font-size: 1rem;\n  font-weight: bold;\n  background: rgb(52, 191, 255);\n  border: 0;\n  color: white;\n  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.233);\n}", "",{"version":3,"sources":["webpack://./src/assets/css/style.css"],"names":[],"mappings":"AAAA;IACI;;;;cAIU;AACd;AACA;EACE,eAAe;AACjB;;AAEA;EACE,iBAAiB;AACnB;;AAEA;EACE,iBAAiB;EACjB,mBAAmB;EACnB,iBAAiB;EACjB,qBAAqB;EACrB,gBAAgB;EAChB,WAAW;EACX,aAAa;AACf;;AAEA;EACE,WAAW;EACX,YAAY;AACd;;AAEA;EACE,gBAAgB;EAChB,gBAAgB;EAChB,WAAW;EACX,aAAa;EACb,eAAe;EACf,iBAAiB;EACjB,6BAA6B;EAC7B,SAAS;EACT,YAAY;EACZ,6CAA6C;AAC/C","sourcesContent":["* {\n    font-family: 'Segoe UI',\n    Tahoma,\n    Geneva,\n    Verdana,\n    sans-serif;   \n}\nh1 {\n  font-size: 1rem;\n}\n\nh2 {\n  font-size: 0.9rem;\n}\n\n.password-generated {\n  font-size: 1.2rem;\n  margin-bottom: 1rem;\n  font-weight: bold;\n  background: lightgray;\n  max-width: 30rem;\n  width: 100%;\n  padding: 1rem;\n}\n\ninput[type=\"checkbox\"] {\n  width: 1rem;\n  height: 1rem;\n}\n\nbutton {\n  margin-top: 1rem;\n  max-width: 20rem;\n  width: 100%;\n  padding: 1rem;\n  font-size: 1rem;\n  font-weight: bold;\n  background: rgb(52, 191, 255);\n  border: 0;\n  color: white;\n  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.233);\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -526,8 +607,10 @@ var __webpack_exports__ = {};
   \**********************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_css_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./assets/css/style.css */ "./src/assets/css/style.css");
+/* harmony import */ var _modules_formGeraSenha__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/formGeraSenha */ "./src/modules/formGeraSenha.js");
 
-console.log('just a simple template with webpack configs');
+
+(0,_modules_formGeraSenha__WEBPACK_IMPORTED_MODULE_1__.default)();
 })();
 
 /******/ })()
